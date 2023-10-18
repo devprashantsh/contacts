@@ -21,6 +21,7 @@ function App() {
   });
 
   useEffect(() => {
+    console.log("ogt called useEffect ", isAuthenticated)
     if (isAuthenticated) {
       if (location.state && location.state.from) {
         navigate(location.state.from);
@@ -30,7 +31,7 @@ function App() {
     } else {
       navigate("/signin");
     }
-  }, []);
+  }, [isAuthenticated]);
   return (
     <>
       <AppRoutes />

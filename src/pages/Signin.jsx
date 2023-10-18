@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Heading,
@@ -37,6 +37,7 @@ function Signin() {
 
     auth.loginWithGoogle();
   };
+  console.log({erro:auth.error})
 
   return (
     <Box
@@ -76,7 +77,12 @@ function Signin() {
           </Button>
         </Stack>
       </form>
-      <Text></Text>
+     {auth.error && <Text 
+      color='red'
+      textAlign='center'
+     >
+        {auth.error}
+      </Text>}
       <Button
         width="full"
         marginTop={5}

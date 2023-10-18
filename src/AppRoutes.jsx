@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import SignupPage from "./pages/Signup";
 import Layout from "./layout";
-import LangingPage from "./pages/LangingPage";
+import LangingPage from "./pages/Home";
 import SigninPage from "./pages/Signin";
 import RequireAuth from "./components/RequireAuth";
 

@@ -1,12 +1,11 @@
 // Navbar.js
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Flex, Box, Button, Text, Spacer, Link as ChakraLink } from '@chakra-ui/react';
+import { Flex, Box, Button, Text, Stack, Avatar } from '@chakra-ui/react';
 import { useAuth } from '../contexts/auth-context';
 
 function Navbar() {
   const auth = useAuth();
-
   return (
     <Flex
       as="nav"
@@ -23,9 +22,9 @@ function Navbar() {
         </Text>
       </Link>
       <Box>
-        {auth.user ? (
-          <>
-            <Text mr="4">Welcome {auth.user.email}!</Text>
+        {auth.isAuthenticated ? (
+          <Stack direction='row'>
+            <Avatar name={auth.user.displayName} src={auth.user.photoURL}  />
             <Button
               onClick={auth.signout}
               variant="link"
@@ -34,7 +33,7 @@ function Navbar() {
             >
               Sign out
             </Button>
-          </>
+          </Stack>
         ) : (
           <Link to="/signin">
             <Button
