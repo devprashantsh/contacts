@@ -1,6 +1,5 @@
 import { collection, addDoc, query, getDocs } from "firebase/firestore";
 
-// Assuming you have a contact object and the currently authenticated user's UID.
 export const addContact = async (contact) => {
   try {
     const docRef = await addDoc(
@@ -13,7 +12,8 @@ export const addContact = async (contact) => {
   }
 };
 
-// Get contacts for the currently authenticated user.
+// random 
+
 export const getContacts = async (currentUserUid) => {
   try {
     const q = query(collection(db, "users", currentUserUid, "contacts"));
