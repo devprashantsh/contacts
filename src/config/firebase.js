@@ -1,4 +1,5 @@
 import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
 import { firebaseConfig } from ".";
 import {
   GoogleAuthProvider,
@@ -12,6 +13,7 @@ class FirebaseApp {
   constructor() {
     this.app = initializeApp(firebaseConfig);
     this.auth = getAuth(this.app);
+    this.db = getFirestore(this.app);
     this.googleProvider = new GoogleAuthProvider();
   }
 
@@ -40,7 +42,6 @@ class FirebaseApp {
         onError(error);
       });
   }
-
   signout({  onSuccess = () => {}, onError = () => {} }) {
     signOut(this.auth).then(() => {
       // Sign-out successful.
@@ -50,6 +51,7 @@ class FirebaseApp {
       onError(error)
     });
   }
+  
 }
 
 export default new FirebaseApp();

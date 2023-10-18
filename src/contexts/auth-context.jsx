@@ -17,18 +17,24 @@ function useAuth() {
 // AuthProvider component
 function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
+  const [error, setError] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(null);
   
-
+console.log({user})
   
   const signin = ({ email, password }, callback = () => {}) => {
+    setError(false)
     const onSuccess = (user) => {
       setUser(user);
       setIsAuthenticated(true);
       callback(user);
     };
     const onError = (error) => {
-      console.error(error.message);
+      if (error.code === "auth/invalid-login-credentials"){
+        setError('Invalid Email or Password')
+      }else{
+        setError('Something went wrong, please try again')
+      }
     };
     FireBaseApp.signin({ email, password, onSuccess, onError });
   };
@@ -45,6 +51,7 @@ function AuthProvider({ children }) {
 
   }
   const signup = ({ email, password }, callback = () => {}) => {
+    setError(false)
     const onSuccess = (user) => {
       setUser(user);
       setIsAuthenticated(true);
@@ -52,6 +59,7 @@ function AuthProvider({ children }) {
     };
     const onError = (error) => {
       console.error(error.message);
+      setError("Something went wrong")
     };
     FireBaseApp.signup({ email, password, onSuccess, onError });
   };
@@ -66,7 +74,7 @@ function AuthProvider({ children }) {
 
   
 
-  const value = { user, isAuthenticated,setIsAuthenticated,setUser,loginWithGoogle, signin, signout, signup };
+  const value = { user, isAuthenticated,error,setIsAuthenticated,setUser,loginWithGoogle, signin, signout, signup };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
