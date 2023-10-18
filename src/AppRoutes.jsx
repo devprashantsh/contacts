@@ -10,8 +10,7 @@ const AppRoutes = () => {
   return (
     <>
       <Routes>
-        <Route element={<Layout />}>
-          {/* <Route path="/login" element={<LoginPage />} /> */}
+        <Route path="/" element={<Layout />}>
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/signin" element={<SigninPage />} />
           <Route
@@ -22,6 +21,9 @@ const AppRoutes = () => {
               </RequireAuth>
             }
           />
+
+
+          
         </Route>
       </Routes>
     </>

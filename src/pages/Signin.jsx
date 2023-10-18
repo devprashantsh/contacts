@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Box,
   Heading,
@@ -8,15 +8,15 @@ import {
   Button,
   Stack,
   Text,
-} from '@chakra-ui/react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useAuth } from '../contexts/auth-context';
+} from "@chakra-ui/react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/auth-context";
 
 function Signin() {
   const auth = useAuth();
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
 
   const handleChange = (e) => {
@@ -26,20 +26,16 @@ function Signin() {
       [name]: value,
     }));
   };
-  const navigate = useNavigate()
-  const location = useLocation();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    auth.signin(formData, () => {
-      // Handle successful login
-      // If a location parameter is provided, navigate to that location; otherwise, navigate to "/"
-      if (location.state && location.state.from) {
-        navigate(location.state.from);
-      } else {
-        navigate('/home');
-      }
-    });
+    auth.signin(formData);
+  };
+
+  const handleGoogleLogin = (e) => {
+    e.preventDefault();
+
+    auth.loginWithGoogle();
   };
 
   return (
@@ -80,8 +76,19 @@ function Signin() {
           </Button>
         </Stack>
       </form>
+      <Text></Text>
+      <Button
+        width="full"
+        marginTop={5}
+        type="button"
+        colorScheme="teal"
+        variant="outline"
+        onClick={handleGoogleLogin}
+      >
+        Sign in with Google
+      </Button>
       <Text mt="4" textAlign="center">
-        Don't have an account?{' '}
+        Don't have an account?{" "}
         <Link color="teal.500" to="/signup">
           Sign up
         </Link>

@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from ".";
 import {
+  GoogleAuthProvider,
   createUserWithEmailAndPassword,
   getAuth,
   signInWithEmailAndPassword,
@@ -11,6 +12,7 @@ class FirebaseApp {
   constructor() {
     this.app = initializeApp(firebaseConfig);
     this.auth = getAuth(this.app);
+    this.googleProvider = new GoogleAuthProvider();
   }
 
   signup({ email, password, onSuccess = () => {}, onError = () => {} }) {
@@ -38,6 +40,7 @@ class FirebaseApp {
         onError(error);
       });
   }
+
   signout({  onSuccess = () => {}, onError = () => {} }) {
     signOut(this.auth).then(() => {
       // Sign-out successful.

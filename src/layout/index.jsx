@@ -4,6 +4,7 @@ import { Flex, Box } from '@chakra-ui/react';
 import Navbar from '../components/Navbar';
 
 function Layout() {
+  console.log("layout")
   return (
       <Flex direction="column" align="center" minHeight="100vh">
         <Navbar /> {/* Include the Navbar component */}
