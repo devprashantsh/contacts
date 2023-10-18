@@ -12,6 +12,8 @@ export const addContact = async (contact) => {
   }
 };
 
+// random 
+
 export const getContacts = async (currentUserUid) => {
   try {
     const q = query(collection(db, "users", currentUserUid, "contacts"));
