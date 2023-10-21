@@ -1,37 +1,29 @@
-import { Box } from '@chakra-ui/react';
-import React, {useState} from 'react'
-import ContactList from '../components/contactList';
-import ContactForm from '../components/ContactForm';
-
-const contactsDummy = [
-  {
-    id: 1,
-    name: 'John Doe',
-    email: 'john@example.com',
-    phone: '123-456-7890',
-    profilePicture: 'https://via.placeholder.com/100',
-  },
-  {
-    id: 2,
-    name: 'Jane Smith',
-    email: 'jane@example.com',
-    phone: '987-654-3210',
-    profilePicture: 'https://via.placeholder.com/100',
-  },
-];
+import { Box } from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
+import Contacts from "../components/Contacts";
+import ContactForm from "../components/ContactForm";
+import { getContacts } from "../api/contacts";
 
 const Home = () => {
-  const [contacts, setContacts] = useState(contactsDummy);
+  const [contacts, setContacts] = useState([]);
+  useEffect(() => {
+    fetchContacts();
+  }, []);
+
+  async function fetchContacts() {
+    const contacts = await getContacts();
+    setContacts(contacts);
+  }
+  
   const addContact = (newContact) => {
-    // Add the new contact to your list of contacts
-    setContacts([...contacts, newContact]);
+    fetchContacts()
   };
   return (
     <Box p="4">
-        <ContactList contacts={contacts} />
-        <ContactForm onAddContact={addContact} />
-      </Box>
-  )
-}
+      <Contacts contacts={contacts} />
+      <ContactForm onAddContact={addContact} />
+    </Box>
+  );
+};
 
-export default Home
+export default Home;

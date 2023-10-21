@@ -9,4 +9,8 @@ const firebaseConfig = {
     appId: import.meta.env.VITE_FIREBASE_APP_ID
   };
 
-  export {firebaseConfig}
+  const dbNames = {
+    CONTACTS: 'contacts'
+  }
+
+  export {firebaseConfig, dbNames}

@@ -7,10 +7,12 @@ import {
   Button,
   Text,
 } from '@chakra-ui/react';
+import { addContact } from '../api/contacts';
+import { useAuth } from '../contexts/auth-context';
 
 const ContactForm = ({ onAddContact }) => {
   const [contact, setContact] = useState({ name: '', email: '', phone: '' });
-
+  const {user} = useAuth()
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setContact({ ...contact, [name]: value });
@@ -18,8 +20,10 @@ const ContactForm = ({ onAddContact }) => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    const uid = user.uid
+    addContact(uid,contact)
+    setContact({name: '', email: '', phone: ''})
     onAddContact(contact);
-    setContact({ name: '', email: '', phone: '' });
   };
 
   return (
@@ -52,7 +56,7 @@ const ContactForm = ({ onAddContact }) => {
             onChange={handleInputChange}
           />
         </FormControl>
-        <Button type="submit" colorScheme="teal" mt="4">
+        <Button type="submit" colorScheme="teal" mt="4" >
           Add Contact
         </Button>
       </form>
