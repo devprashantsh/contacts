@@ -39,6 +39,3 @@ We welcome contributions to enhance the Moody Contacts App. If you'd like to con
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
----
-
-Feel free to update this template with specific information about your project. Once you've made your updates, don't forget to save the README file on GitHub. It will automatically be displayed on your repository's main page.
