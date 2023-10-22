@@ -18,7 +18,7 @@ function Navbar() {
     >
       <Link to="/">
         <Text fontSize="xl" fontWeight="bold">
-          Contacts
+          Moody Contacts
         </Text>
       </Link>
       <Box>
