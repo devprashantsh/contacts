@@ -33,7 +33,7 @@ const ContactCard = ({ contact }) => {
             aria-label="Edit Contact"
             icon={<EditIcon />}
             size="sm"
-            colorScheme="teal"
+            colorScheme="brand"
           />
           <IconButton
             aria-label="Delete Contact"

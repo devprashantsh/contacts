@@ -72,7 +72,7 @@ function Signin() {
               onChange={handleChange}
             />
           </FormControl>
-          <Button type="submit" colorScheme="teal">
+          <Button type="submit" colorScheme="brand">
             Log In
           </Button>
         </Stack>
@@ -87,7 +87,7 @@ function Signin() {
         width="full"
         marginTop={5}
         type="button"
-        colorScheme="teal"
+        colorScheme="brand"
         variant="outline"
         onClick={handleGoogleLogin}
       >
@@ -95,7 +95,7 @@ function Signin() {
       </Button>
       <Text mt="4" textAlign="center">
         Don't have an account?{" "}
-        <Link color="teal.500" to="/signup">
+        <Link color="brand.500" to="/signup">
           Sign up
         </Link>
       </Text>

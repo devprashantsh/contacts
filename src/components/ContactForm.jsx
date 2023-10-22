@@ -56,7 +56,7 @@ const ContactForm = ({ onAddContact }) => {
             onChange={handleInputChange}
           />
         </FormControl>
-        <Button type="submit" colorScheme="teal" mt="4" >
+        <Button type="submit" colorScheme="brand" mt="4" >
           Add Contact
         </Button>
       </form>
