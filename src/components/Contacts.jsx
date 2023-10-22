@@ -23,20 +23,13 @@ const Contacts = ({ contacts }) => {
       cell: (row) => row.email,
     },
     {
-      header: 'City',
+      header: 'Phone',
       cell: (row) => row.phone,
     },
   ];
   return (
     <Box p="4">
-      <Heading size="lg" mb="4">
-        Contacts
-      </Heading>
-        {/* <SimpleGrid columns={2} spacing={4}>
-          {contacts.map((contact) => (
-            <ContactCard key={contact.id} contact={contact} />
-          ))}
-        </SimpleGrid> */}
+      
         <TableComp
           columns={columns}
           data={contacts}

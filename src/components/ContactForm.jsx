@@ -1,18 +1,8 @@
-import React, { useState } from 'react';
-import {
-  Box,
-  FormControl,
-  FormLabel,
-  Input,
-  Button,
-  Text,
-} from '@chakra-ui/react';
-import { addContact } from '../api/contacts';
-import { useAuth } from '../contexts/auth-context';
+import React, { useState } from "react";
+import { Box, FormControl, FormLabel, Input, Button } from "@chakra-ui/react";
 
-const ContactForm = ({ onAddContact }) => {
-  const [contact, setContact] = useState({ name: '', email: '', phone: '' });
-  const {user} = useAuth()
+const ContactForm = ({ onAddContact, showActions }) => {
+  const [contact, setContact] = useState({ name: "", email: "", phone: "" });
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setContact({ ...contact, [name]: value });
@@ -20,9 +10,7 @@ const ContactForm = ({ onAddContact }) => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    const uid = user.uid
-    addContact(uid,contact)
-    setContact({name: '', email: '', phone: ''})
+    setContact({ name: "", email: "", phone: "" });
     onAddContact(contact);
   };
 
@@ -56,9 +44,11 @@ const ContactForm = ({ onAddContact }) => {
             onChange={handleInputChange}
           />
         </FormControl>
-        <Button type="submit" colorScheme="brand" mt="4" >
-          Add Contact
-        </Button>
+        {showActions && (
+          <Button type="submit" colorScheme="brand" mt="4">
+            Add Contact
+          </Button>
+        )}
       </form>
     </Box>
   );

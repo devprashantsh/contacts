@@ -13,7 +13,7 @@ import {
 const TableComp = ({ data, columns, caption }) => {
   return (
     <Box borderWidth="1px" borderRadius="lg" overflow="hidden">
-      <Table variant="striped" colorScheme="teal">
+      <Table variant="striped" colorScheme="">
         {caption && <TableCaption placement="top">{caption}</TableCaption>}
         <Thead>
           <Tr>
