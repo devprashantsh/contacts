@@ -70,7 +70,7 @@ function SignupPage() {
                 onChange={handleChange}
               />
             </FormControl>
-            <Button type="submit" colorScheme="teal">
+            <Button type="submit" colorScheme="brand">
               Sign Up
             </Button>
           </Stack>

@@ -1,11 +1,17 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Button, Heading, Stack, useDisclosure } from "@chakra-ui/react";
+
 import React, { useEffect, useState } from "react";
 import Contacts from "../components/Contacts";
-import ContactForm from "../components/ContactForm";
 import { getContacts } from "../api/contacts";
+import ContactDrawer from "../components/ContactDrawer";
 
 const Home = () => {
   const [contacts, setContacts] = useState([]);
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const btnRef = React.useRef();
+
   useEffect(() => {
     fetchContacts();
   }, []);
@@ -14,14 +20,25 @@ const Home = () => {
     const contacts = await getContacts();
     setContacts(contacts);
   }
-  
-  const addContact = (newContact) => {
-    fetchContacts()
-  };
+
   return (
     <Box p="4">
+      <Stack direction="row">
+        <Heading size="lg" mb="4">
+          Contacts
+        </Heading>
+        <Button ref={btnRef} colorScheme="teal" onClick={onOpen}>
+          New
+        </Button>
+      </Stack>
+
       <Contacts contacts={contacts} />
-      <ContactForm onAddContact={addContact} />
+      <ContactDrawer
+        fetchContacts={fetchContacts}
+        ref={btnRef}
+        isOpen={isOpen}
+        onClose={onClose}
+      />
     </Box>
   );
 };

@@ -12,7 +12,7 @@ function Navbar() {
       align="center"
       justify="space-between"
       padding="1rem"
-      bg="teal.500"
+      bg="brand.100"
       width="100%"
       color="white"
     >
@@ -39,7 +39,7 @@ function Navbar() {
             <Button
               variant="outline"
               color="white"
-              _hover={{ bg: 'teal.600' }}
+              _hover={{ bg: 'brand.600' }}
             >
               Log in
             </Button>
